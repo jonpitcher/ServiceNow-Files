@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<unload unload_date="2023-02-19 22:06:04">
+<sys_script_client action="INSERT_OR_UPDATE">
+<active>true</active>
+<applies_extended>false</applies_extended>
+<condition/>
+<description/>
+<field>state</field>
+<global>true</global>
+<isolate_script>true</isolate_script>
+<messages/>
+<name>Script Jonathan P 2.1 </name>
+<order/>
+<script><![CDATA[function onCellEdit(sysIDs, table, oldValues, newValue, callback) {
+    var saveAndClose = true;
+
+    if (newValue == 6) { //Resolved
+        alert("you cannot change the state to 'Resolved' from a list");
+        saveAndClose = false;
+    }
+    if (newValue == 7) {
+        alert("you cannot change the state to 'Closed' from a list");
+		
+        saveAndClose = false;
+    }
+
+    callback(saveAndClose);
+
+}
+
+//TESTING THIS IS MINE]]></script>
+<sys_class_name>sys_script_client</sys_class_name>
+<sys_created_by>jonathan.pitcher@snc</sys_created_by>
+<sys_created_on>2023-02-19 22:04:54</sys_created_on>
+<sys_domain>global</sys_domain>
+<sys_domain_path>/</sys_domain_path>
+<sys_id>3514f0fa1b0d611046412132604bcbe0</sys_id>
+<sys_mod_count>1</sys_mod_count>
+<sys_name>Script Jonathan P 2.1 </sys_name>
+<sys_overrides display_value=""/>
+<sys_package display_value="Human Resources: Core" source="sn_hr_core">d4ac3fff5b311200a4656ede91f91af2</sys_package>
+<sys_policy/>
+<sys_scope display_value="Human Resources: Core">d4ac3fff5b311200a4656ede91f91af2</sys_scope>
+<sys_update_name>sys_script_client_3514f0fa1b0d611046412132604bcbe0</sys_update_name>
+<sys_updated_by>jonathan.pitcher@snc</sys_updated_by>
+<sys_updated_on>2023-02-19 22:05:54</sys_updated_on>
+<table>incident</table>
+<type>onCellEdit</type>
+<ui_type>0</ui_type>
+<view/>
+</sys_script_client>
+</unload>

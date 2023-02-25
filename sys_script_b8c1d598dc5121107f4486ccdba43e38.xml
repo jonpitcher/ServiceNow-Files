@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<unload unload_date="2023-02-24 16:29:07">
+<sys_script action="INSERT_OR_UPDATE">
+<abort_action>false</abort_action>
+<access>package_private</access>
+<action_delete>false</action_delete>
+<action_insert>true</action_insert>
+<action_query>false</action_query>
+<action_update>true</action_update>
+<active>true</active>
+<add_message>false</add_message>
+<advanced>true</advanced>
+<change_fields>false</change_fields>
+<client_callable>false</client_callable>
+<collection>incident</collection>
+<condition/>
+<description/>
+<execute_function>false</execute_function>
+<filter_condition table="incident"/>
+<is_rest>false</is_rest>
+<message/>
+<name>Lab 7.3 addEncoded Query</name>
+<order>100</order>
+<priority>100</priority>
+<rest_method display_value=""/>
+<rest_method_text/>
+<rest_service display_value=""/>
+<rest_service_text/>
+<rest_variables/>
+<role_conditions/>
+<script><![CDATA[(function executeRule(current, previous /*null when async*/ ) {
+
+    var makeVIP = new GlideRecord('sys_user');
+    makeVIP.addEncodedQuery("titleLIKEVice^ORtitleLIKEVIP^ORtitleLIKEChief^ORroles=itil");
+	
+	//just use addEncodedQuery instead of addQuery()
+	
+    makeVIP.query();
+
+    while (makeVIP.next()) {
+		
+		makeVIP.vip = true;
+		gs.info(makeVIP.name + "with title: " + makeVIP.title + "is now a VIP");
+		makeVIP.update();
+       //
+    }
+
+})(current, previous);
+
+
+//current.state.changesTo(IncidentState.CLOSED)
+]]></script>
+<sys_class_name>sys_script</sys_class_name>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2023-02-24 16:08:08</sys_created_on>
+<sys_domain>global</sys_domain>
+<sys_domain_path>/</sys_domain_path>
+<sys_id>b8c1d598dc5121107f4486ccdba43e38</sys_id>
+<sys_mod_count>3</sys_mod_count>
+<sys_name>Lab 7.3 addEncoded Query</sys_name>
+<sys_overrides display_value=""/>
+<sys_package display_value="Global" source="global">global</sys_package>
+<sys_policy/>
+<sys_scope display_value="Global">global</sys_scope>
+<sys_update_name>sys_script_b8c1d598dc5121107f4486ccdba43e38</sys_update_name>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2023-02-24 16:26:09</sys_updated_on>
+<template/>
+<when>after</when>
+</sys_script>
+</unload>
